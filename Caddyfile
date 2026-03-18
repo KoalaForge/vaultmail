@@ -1,0 +1,3 @@
+mail.koalastore.digital {
+	reverse_proxy vaultmail:3000
+}
