@@ -457,9 +457,9 @@ export function InboxInterface({ initialAddress, locale, retentionLabel }: Inbox
   }, [filterQuery]);
   
   return (
-    <div className="w-full max-w-6xl mx-auto p-4 md:p-8 space-y-8">
+    <div className="w-full max-w-6xl mx-auto px-3 sm:px-4 md:px-8 py-4 md:py-8 space-y-6 sm:space-y-8">
       {/* Header / Controls */}
-      <div className="glass-card rounded-2xl p-6 md:p-8 space-y-6 relative z-10">
+      <div className="glass-card rounded-2xl p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6 relative z-10">
         <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
           <div className="space-y-1 text-center md:text-left">
             <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
@@ -481,11 +481,11 @@ export function InboxInterface({ initialAddress, locale, retentionLabel }: Inbox
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex flex-col gap-4">
           <div className="flex-1 flex flex-col gap-2">
-            <div className="flex gap-2">
+            <div className="flex flex-col sm:flex-row gap-2">
               <div className="relative flex-1">
-              <Input 
+              <Input
                       value={address.split('@')[0]}
                       onChange={(e) => {
                           const val = e.target.value.replace(/[^a-zA-Z0-9._-]/g, '');
@@ -494,22 +494,19 @@ export function InboxInterface({ initialAddress, locale, retentionLabel }: Inbox
                           localStorage.setItem('dispo_address', `${val}@${currentDomain}`);
                       }}
                       onBlur={() => addToHistory(address)}
-                      className="pr-4 font-mono text-lg bg-black/20 border-white/10 h-12"
+                      className="pr-4 font-mono text-base bg-black/20 border-white/10 h-12"
                       placeholder={t.usernamePlaceholder}
                   />
               </div>
-              <div className="relative flex items-center">
-                   <span className="text-muted-foreground text-lg px-2">@</span>
-              </div>
-              <div className="relative flex-1 max-w-[250px] flex gap-2">
-                   {/* Domain Selection Logic */}
-                   <div className="relative w-full">
+              <div className="flex items-center gap-2">
+                   <span className="text-muted-foreground text-lg shrink-0">@</span>
+                   <div className="relative flex-1 sm:w-[200px] md:w-[250px]">
                     <Button
                         type="button"
                         variant="ghost"
                         onClick={() => setShowDomainMenu((prev) => !prev)}
                         className={cn(
-                          "w-full h-12 pl-3 pr-8 justify-start rounded-md border border-white/10 bg-white/5 text-sm font-mono hover:bg-white/10 glass",
+                          "w-full h-12 pl-3 pr-8 justify-start rounded-md border border-white/10 bg-white/5 text-sm font-mono hover:bg-white/10 glass truncate",
                           showDomainMenu && "bg-white/10"
                         )}
                     >
@@ -525,7 +522,7 @@ export function InboxInterface({ initialAddress, locale, retentionLabel }: Inbox
                                     initial={{ opacity: 0, y: 10, scale: 0.98 }}
                                     animate={{ opacity: 1, y: 0, scale: 1 }}
                                     exit={{ opacity: 0, y: 10, scale: 0.98 }}
-                                    className="absolute z-50 mt-2 w-full rounded-xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-2xl glass overflow-hidden"
+                                    className="absolute z-50 mt-2 w-full min-w-[200px] rounded-xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-2xl glass overflow-hidden"
                                 >
                                     <div className="max-h-60 overflow-y-auto custom-scrollbar p-2 space-y-1">
                                         {savedDomains.map((d) => (
@@ -557,7 +554,7 @@ export function InboxInterface({ initialAddress, locale, retentionLabel }: Inbox
                         )}
                     </AnimatePresence>
                  </div>
-            </div>
+              </div>
             </div>
             <div className="text-xs text-muted-foreground">
               {domainStatusLoading ? (
@@ -578,7 +575,7 @@ export function InboxInterface({ initialAddress, locale, retentionLabel }: Inbox
               )}
             </div>
           </div>
-          <div className="flex gap-2 items-center">
+          <div className="flex flex-wrap gap-2 items-center">
             {/* Settings Button */}
             <Button
                 variant="ghost"
@@ -586,17 +583,19 @@ export function InboxInterface({ initialAddress, locale, retentionLabel }: Inbox
                 onClick={() => setIsAddDomainOpen(true)}
                 className="h-12 w-12 border border-white/10 hover:bg-white/5 text-purple-400 hover:text-purple-300"
                 title={t.settingsTitle}
+                aria-label={t.settingsTitle}
             >
                 <Settings2 className="h-5 w-5" />
             </Button>
 
             <div className="relative">
-                <Button 
-                    onClick={() => setShowHistory(!showHistory)} 
-                    variant="ghost" 
-                    size="icon" 
+                <Button
+                    onClick={() => setShowHistory(!showHistory)}
+                    variant="ghost"
+                    size="icon"
                     className={cn("h-12 w-12 border border-white/10 hover:bg-white/5 relative", showHistory && "bg-white/10 ring-2 ring-white/10")}
                     title={t.historyTitle}
+                    aria-label={t.historyTitle}
                 >
                     <History className="h-5 w-5" />
                     {history.length > 0 && (
@@ -688,10 +687,10 @@ export function InboxInterface({ initialAddress, locale, retentionLabel }: Inbox
                     )}
                 </AnimatePresence>
             </div>
-            <Button onClick={copyAddress} variant="secondary" size="lg" className="h-12 w-full md:w-auto">
+            <Button onClick={copyAddress} variant="secondary" size="lg" className="h-12 flex-1 sm:flex-none">
               <Copy className="mr-2 h-4 w-4" /> {t.copy}
             </Button>
-            <Button onClick={generateAddress} variant="outline" size="lg" className="h-12 border-white/10 hover:bg-white/5 w-full md:w-auto">
+            <Button onClick={generateAddress} variant="outline" size="lg" className="h-12 border-white/10 hover:bg-white/5 flex-1 sm:flex-none">
               <RefreshCw className="mr-2 h-4 w-4" /> {t.newAlias}
             </Button>
           </div>
@@ -777,7 +776,7 @@ export function InboxInterface({ initialAddress, locale, retentionLabel }: Inbox
                                 )}
                             >
                                 <div className="flex justify-between items-start mb-1">
-                                    <span className="font-medium truncate max-w-[150px] text-sm">{sender.label}</span>
+                                    <span className="font-medium truncate max-w-[120px] sm:max-w-[150px] text-sm">{sender.label}</span>
                                     <span className="text-[10px] text-muted-foreground whitespace-nowrap">
                                         {formatDistanceToNow(new Date(email.receivedAt), { addSuffix: true })}
                                     </span>
@@ -796,9 +795,9 @@ export function InboxInterface({ initialAddress, locale, retentionLabel }: Inbox
             {selectedEmail ? (
                 <div className="flex flex-col h-full">
                     {/* Header */}
-                    <div className="p-6 border-b border-white/5 space-y-4 bg-black/20">
-                        <div className="flex flex-wrap items-start justify-between gap-3">
-                            <h1 className="text-xl font-bold text-white">{selectedEmail.subject}</h1>
+                    <div className="p-4 sm:p-6 border-b border-white/5 space-y-3 sm:space-y-4 bg-black/20">
+                        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 sm:gap-3">
+                            <h1 className="text-lg sm:text-xl font-bold text-white break-words">{selectedEmail.subject}</h1>
                             <div className="flex items-center gap-2">
                               <Button variant="ghost" size="sm" onClick={downloadEmail}>
                                 <Download className="mr-2 h-4 w-4" />
@@ -843,9 +842,9 @@ export function InboxInterface({ initialAddress, locale, retentionLabel }: Inbox
                     </div>
                     
                     {/* Body */}
-                    <div className="flex-1 overflow-y-auto p-6 bg-white">
-                        <div 
-                          className="prose prose-base md:prose-lg max-w-none text-black prose-a:text-green-600 prose-a:underline hover:prose-a:text-green-700"
+                    <div className="flex-1 overflow-y-auto p-3 sm:p-6 bg-white">
+                        <div
+                          className="prose prose-sm sm:prose-base md:prose-lg max-w-none text-black prose-a:text-green-600 prose-a:underline hover:prose-a:text-green-700"
                           dangerouslySetInnerHTML={{
                             __html: highlightVerificationCodes(
                               resolveInlineImages(

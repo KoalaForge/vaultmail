@@ -102,8 +102,8 @@ export function HomePage({ initialAddress }: HomePageProps) {
   return (
     <main className="min-h-screen bg-gradient-to-b from-background to-background/50 relative overflow-hidden flex flex-col">
       {/* Background Blobs */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Navbar */}
       <header className="border-b border-white/5 bg-background/50 backdrop-blur-md sticky top-0 z-50">
@@ -120,6 +120,8 @@ export function HomePage({ initialAddress }: HomePageProps) {
                 type="button"
                 variant="ghost"
                 onClick={() => setShowMenu((prev) => !prev)}
+                aria-label="Open menu"
+                aria-expanded={showMenu}
                 className={cn(
                   "h-12 w-12 rounded-full border border-white/10 bg-white/10 text-white",
                   showMenu && "bg-white/10"
@@ -190,7 +192,7 @@ export function HomePage({ initialAddress }: HomePageProps) {
       {/* Content */}
           <div className="flex-1 py-12">
          <div className="text-center max-w-2xl mx-auto px-4 mb-12 space-y-4">
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-white/50">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-white/50">
               {t.heroTitle} <br/> {t.heroTitleSuffix}
             </h1>
             <p className="text-muted-foreground text-lg">
@@ -205,7 +207,7 @@ export function HomePage({ initialAddress }: HomePageProps) {
          />
 
          {/* Features Grid */}
-         <div className="max-w-6xl mx-auto px-4 mt-24 grid md:grid-cols-3 gap-8">
+         <div className="max-w-6xl mx-auto px-4 mt-16 sm:mt-24 grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8">
             <Feature 
                 icon={<Zap className="h-6 w-6 text-yellow-400" />}
                 title={t.featureInstantTitle}
