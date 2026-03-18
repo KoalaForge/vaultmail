@@ -1,0 +1,19 @@
+services:
+  vaultmail:
+    build: .
+    container_name: vaultmail
+    restart: unless-stopped
+    ports:
+      - "3008:3000"
+    environment:
+      - MONGODB_URI=${MONGODB_URI}
+      - MONGODB_DB=${MONGODB_DB:-vaultmail}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - CRON_SECRET=${CRON_SECRET}
+      - ATTACHMENT_MAX_BYTES=${ATTACHMENT_MAX_BYTES:-25000000}
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
