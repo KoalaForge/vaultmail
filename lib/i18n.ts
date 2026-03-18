@@ -11,8 +11,7 @@ export const DEFAULT_LOCALE = (() => {
 
 const translations = {
   en: {
-    appName: 'YS Mail',
-    github: 'GitHub',
+    appName: 'KOALASTORE.DIGI',
     heroTitle: 'Instant Inbox',
     heroTitleSuffix: 'Built for Builders',
     heroSubtitle:
@@ -91,7 +90,7 @@ const translations = {
     domainStatusUnavailable: 'Domain status is unavailable.',
     apiAccessTitle: 'Developer API Access',
     apiAccessSubtitle:
-      'Use these endpoints to integrate YS Mail into your workflows.',
+      'Use these endpoints to integrate KOALASTORE.DIGI into your workflows.',
     apiAccessCta: 'View documentation',
     apiAccessEndpointsTitle: 'Core endpoints',
     apiAccessWebhookTitle: 'Webhook',
@@ -205,8 +204,7 @@ const translations = {
     twoFaNext: 'Next OTP',
   },
   id: {
-    appName: 'YS Mail',
-    github: 'GitHub',
+    appName: 'KOALASTORE.DIGI',
     heroTitle: 'Inbox Instan',
     heroTitleSuffix: 'Untuk Para Builder',
     heroSubtitle:
@@ -285,7 +283,7 @@ const translations = {
     domainStatusUnavailable: 'Masa aktif domain belum tersedia.',
     apiAccessTitle: 'Akses API Developer',
     apiAccessSubtitle:
-      'Gunakan endpoint berikut untuk integrasi YS Mail ke workflow Anda.',
+      'Gunakan endpoint berikut untuk integrasi KOALASTORE.DIGI ke workflow Anda.',
     apiAccessCta: 'Lihat dokumentasi',
     apiAccessEndpointsTitle: 'Endpoint utama',
     apiAccessWebhookTitle: 'Webhook',

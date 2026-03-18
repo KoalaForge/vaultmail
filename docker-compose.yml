@@ -4,7 +4,7 @@ services:
     container_name: vaultmail
     restart: unless-stopped
     ports:
-      - "3008:3000"
+      - "3009:3000"
     environment:
       - MONGODB_URI=${MONGODB_URI}
       - MONGODB_DB=${MONGODB_DB:-vaultmail}

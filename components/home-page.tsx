@@ -177,16 +177,6 @@ export function HomePage({ initialAddress }: HomePageProps) {
                           <Wrench className="h-4 w-4 text-orange-300" />
                           {t.menuTools}
                         </a>
-                        <a
-                          href="https://github.com/yasirarism"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-white/80 transition-colors hover:bg-white/10"
-                          onClick={() => setShowMenu(false)}
-                        >
-                          <Shield className="h-4 w-4 text-green-300" />
-                          {t.github}
-                        </a>
                       </div>
                     </motion.div>
                   </>

@@ -1,4 +1,4 @@
-export const DEFAULT_APP_NAME = 'YS Mail';
+export const DEFAULT_APP_NAME = 'KOALASTORE.DIGI';
 
 export const normalizeAppName = (value: unknown) => {
   if (typeof value !== 'string') return '';

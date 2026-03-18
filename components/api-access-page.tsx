@@ -116,16 +116,6 @@ export function ApiAccessPage() {
                         <Wrench className="h-4 w-4 text-orange-300" />
                         {t.menuTools}
                       </Link>
-                      <Link
-                        href="https://github.com/yasirarism"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-white/80 transition-colors hover:bg-white/10"
-                        onClick={() => setShowMenu(false)}
-                      >
-                        <Shield className="h-4 w-4 text-green-300" />
-                        {t.github}
-                      </Link>
                     </div>
                   </div>
                 </>
@@ -147,14 +137,6 @@ export function ApiAccessPage() {
                 {t.apiAccessSubtitle}
               </p>
             </div>
-            <Link
-              href="https://github.com/yasirarism"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/20"
-            >
-              {t.apiAccessCta}
-            </Link>
           </div>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             <div className="rounded-xl border border-white/10 bg-black/40 p-4">
