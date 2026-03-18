@@ -23,5 +23,5 @@ services:
       - backend
 
 networks:
-  backend:
+  proxy-network:
     external: true
